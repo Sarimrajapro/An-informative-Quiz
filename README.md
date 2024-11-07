@@ -1,1 +1,1 @@
-# An-informative-Quiz
+A program capable of displaying question to the user like KBC. Using list data type to store the question and their correct answer. Displaying the final amount that the person is taking home after playing the game.
