@@ -1,0 +1,65 @@
+# a program capable of displaying question to the user like KBC. Using list data
+# type to store the question and their correct answer. Displaying the final amount that
+# the person is taking home after playing the game.
+
+import time
+
+questions = [
+    {
+        "question": "What is the capital of Pakistan?",
+        "options": ["Islamabad", "Karachi", "Lahore", "Peshawar"],
+        "answer": "Karachi"
+    },
+    {
+        "question": "What is the largest planet in our solar system?",
+        "options": ["Jupiter", "Saturn", "Earth", "Mars"],
+        "answer": "Earth"
+    },
+    {
+        "question": "What is the chemical symbol for gold?",
+        "options": ["Ag", "Au", "Fe", "Hg"],
+        "answer": "Ag"
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+        "answer": "Pacific Ocean"
+    },
+    {
+        "question": "What is the largest country in the world by land area?",
+        "options": ["Russia", "China", "Canada", "United States"],
+        "answer": "Russia"
+    }
+]
+
+money = 0
+level = 0
+
+for question_data in questions:
+    print(f"\nLevel {level + 1}: For Rs. {money + 10000}")  # Assuming each level is worth Rs. 10000
+    print(question_data["question"])
+    for i, option in enumerate(question_data["options"]):
+        print(f"{i + 1}. {option}")
+
+    user_answer = input("Enter your answer (1-4): ")
+
+    try:
+        user_answer = int(user_answer)
+        if 1 <= user_answer <= len(question_data["options"]) and \
+           question_data["options"][user_answer - 1] == question_data["answer"]:
+            print("Correct!")
+            money += 10000
+            level += 1
+        else:
+            print("Incorrect!")
+            print(f"The correct answer was: {question_data['answer']}")
+            print(f"You won a total of Rs. {money}")
+            break
+    except ValueError:
+        print("Invalid input. Please enter a number between 1 and 4.")
+        print(f"You won a total of Rs. {money}")
+        break
+
+if level == len(questions):
+    print("\nCongratulations! You answered all the questions correctly.")
+    print(f"You are taking home a total of Rs. {money}")
